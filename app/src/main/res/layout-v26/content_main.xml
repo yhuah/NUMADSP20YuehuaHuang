@@ -60,19 +60,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <EditText
-            android:id="@+id/dollars"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/dollars"
-            android:inputType="numberDecimal"
-            android:importantForAutofill="no" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/link_collector_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/convert" />
+            android:text="@string/linkcollector" />
 
         <CalendarView
             android:id="@+id/calendarView"

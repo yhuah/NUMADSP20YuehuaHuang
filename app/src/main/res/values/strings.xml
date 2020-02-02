@@ -15,4 +15,10 @@
     <string name="dollar_int">dollars</string>
     <string name="dollars">dollars</string>
     <string name="convert">Convert</string>
+    <string name="linkcollector">LinkCollector</string>
+    <string name="enter_link_name_here">Enter Link Name Here</string>
+    <string name="enter_link_url_here">Enter Link URL Here</string>
+    <string name="linkcollector_des">linkcollector_des</string>
+    <string name="linkcollector_store">linkcollector_store</string>
+    <string name="Link_Collector_Store">link collector store</string>
 </resources>

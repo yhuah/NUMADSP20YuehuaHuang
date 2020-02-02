@@ -1,19 +1,20 @@
 package com.example.numadsp20yuehuahuang;
 
+import android.content.Intent;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.EditText;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -64,6 +65,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
+        Button linkCollectorButton = findViewById(R.id.link_collector_button);
+        linkCollectorButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+
+            public void onClick(View view){
+                startLinkCollectorActivity();
+
+            }
+        });
+
+    }
+
+    public void startLinkCollectorActivity(){
+
+        Intent linkIntent= new Intent(this, LinkCollectorActivity.class);
+        startActivity(linkIntent);
     }
 
     @Override
