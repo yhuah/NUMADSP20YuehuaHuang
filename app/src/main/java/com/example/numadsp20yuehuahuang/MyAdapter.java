@@ -1,5 +1,6 @@
 package com.example.numadsp20yuehuahuang;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+    private static final String TAG = "MyActivity";
     private ArrayList<LinkCollectorActivity.DataPair> myData;
 
     public MyAdapter(ArrayList<LinkCollectorActivity.DataPair> myData){
@@ -44,6 +46,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public void onBindViewHolder( @NonNull MyViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
+        Log.d(TAG, "onBindViewHolder:called.");
         String link_name = myData.get(position).getName();
         String link_url = myData.get(position).getUrl();
 
