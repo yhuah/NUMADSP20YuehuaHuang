@@ -21,4 +21,7 @@
     <string name="linkcollector_des">linkcollector_des</string>
     <string name="linkcollector_store">linkcollector_store</string>
     <string name="Link_Collector_Store">link collector store</string>
+    <string name="name">name</string>
+    <string name="url">url</string>
+    <string name="scroll_to_see_more_links">scroll_to_see_more_links</string>
 </resources>

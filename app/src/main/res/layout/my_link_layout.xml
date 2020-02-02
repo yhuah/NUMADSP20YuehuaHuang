@@ -6,14 +6,14 @@
         android:id="@+id/link_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="name"
+        android:text="@string/name"
         android:textSize="24sp" />
 
     <TextView
         android:id="@+id/link_url"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="url"
+        android:text="@string/url"
         android:autoLink="web"
         android:textSize="24sp" />
 
