@@ -24,16 +24,37 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
-
         <TextView
-            android:id="@+id/hello_text"
-            android:layout_width="wrap_content"
+            android:id="@+id/prime_number"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hello World!"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:ems="50"
+            android:text="@string/prime_number" />
+
+        <Button
+            android:id="@+id/start_find_prime__button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/START_FIND_PRIME" />
+        <Button
+            android:id="@+id/stop_find_prime__button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/STOP_FIND_PRIME" />
+
+
+        <Button
+            android:id="@+id/start_watch_time__button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/start_watch_time" />
+        <Button
+            android:id="@+id/stop_watch_time_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/stop_watch_time" />
+
+
         <TextView
             android:id="@+id/textView4"
             android:layout_width="match_parent"
@@ -67,10 +88,7 @@
             android:layout_height="wrap_content"
             android:text="@string/linkcollector" />
 
-        <CalendarView
-            android:id="@+id/calendarView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+
 
     </LinearLayout>
 

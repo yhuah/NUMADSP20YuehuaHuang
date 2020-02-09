@@ -24,4 +24,11 @@
     <string name="name">name</string>
     <string name="url">url</string>
     <string name="scroll_to_see_more_links">scroll_to_see_more_links</string>
+    <string name="Find_Prime">Find_Prime</string>
+    <string name="stop_watch_time">stop_watch_time</string>
+    <string name="start_watch_time">start_watch_time</string>
+    <string name="prime_number">prime_number</string>
+    <string name="START_FIND_PRIME">START_FIND_PRIME</string>
+    <string name="STOP_FIND_PRIME">STOP_FIND_PRIME</string>
+
 </resources>
