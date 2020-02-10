@@ -209,7 +209,7 @@ Make sure that the user can see the search in action.
 
         @Override
         protected String doInBackground(Integer...integers){
-            Integer start =2;
+            Integer start =1;
             for (; start<integers[0];start+=1){
                 if (this.isCancelled()){
                     break;
@@ -250,6 +250,9 @@ Make sure that the user can see the search in action.
         }
 
         private boolean isPrime(Integer number) {
+            if (number ==1){
+                return false;
+            }
             if (number == 2 || number == 3) {
                 return true;
             }
