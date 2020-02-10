@@ -209,8 +209,8 @@ Make sure that the user can see the search in action.
 
         @Override
         protected String doInBackground(Integer...integers){
-            Integer start =1;
-            for (; start<integers[0];start+=2){
+            Integer start =2;
+            for (; start<integers[0];start+=1){
                 if (this.isCancelled()){
                     break;
                 }
