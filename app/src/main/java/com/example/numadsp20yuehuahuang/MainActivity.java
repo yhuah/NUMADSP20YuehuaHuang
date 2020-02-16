@@ -1,19 +1,29 @@
 package com.example.numadsp20yuehuahuang;
 
+import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.BatteryManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -43,6 +53,9 @@ Make sure that the user can see the search in action.
 
 public class MainActivity extends AppCompatActivity {
 
+    LocationManager mLocationManager;
+    LocationListener mLocationListener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +73,52 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // show gps
+
+        ToggleButton toggle = (ToggleButton) findViewById(R.id.toggleButton);
+        toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                final TextView gps_view = findViewById(R.id.location);
+                if (isChecked) {
+                    // The toggle is enabled
+                    mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+                    mLocationListener = new LocationListener() {
+                        @Override
+                        public void onLocationChanged(Location location) {
+                            String gps_data = "Longitude: " + location.getLongitude()
+                                    + "\nLatitude: " + location.getLatitude();
+
+                                gps_view.setVisibility(View.VISIBLE);
+                                gps_view.setText(gps_data);
+
+
+                        }
+
+                        @Override
+                        public void onStatusChanged(String provider, int status, Bundle extras) {
+
+                        }
+
+                        @Override
+                        public void onProviderEnabled(String provider) {
+
+                        }
+
+                        @Override
+                        public void onProviderDisabled(String provider) {
+                            Intent i = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                            startActivity(i);
+                        }
+                    };
+                    getGPS();
+
+                } else {
+                    // The toggle is disabled
+                    gps_view.setVisibility(View.INVISIBLE);
+
+                }
+            }
+        });
 
 
         Button about = findViewById(R.id.button3);
@@ -184,6 +243,34 @@ public class MainActivity extends AppCompatActivity {
         startActivity(linkIntent);
     }
 
+    /**
+     * GPS
+     */
+
+    private void getGPS() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                    && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{
+                        Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.ACCESS_COARSE_LOCATION
+                }, 10);
+                return;
+            }
+        }
+        mLocationManager.requestLocationUpdates("gps", 5000, 0, mLocationListener);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        if (requestCode == 10) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                getGPS();
+        }
+
+    }
+
 
 
 
@@ -199,6 +286,8 @@ Make sure that the user can see the search in action.
     private class PrimeTask extends AsyncTask<Integer, Integer, String >{
 
         TextView primeText;
+
+
 
         @Override
         protected void onPreExecute(){
@@ -289,7 +378,13 @@ Make sure that the user can see the search in action.
     }
 
 
-
+ // Using the same app that you have been working on individually, add a button that will
+    // display geographic location (latitude and longitude).
+    // Submit the Play Store link and GitHub link.  Do not start a new app.  Do not generate a new key.
+    //
+    //Display the latitude and longitude as two numbers
+    // (latitude is one number and longitude is one number).
+    // Do not call Google Maps to display the location.  Display the latitude and longitude.
 
 
     @Override

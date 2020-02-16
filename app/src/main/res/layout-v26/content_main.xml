@@ -24,6 +24,23 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
+
+
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="50"
+            android:visibility="invisible"
+            android:text="@string/gps_info" />
+
+        <ToggleButton
+            android:id="@+id/toggleButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/show_gps" />
+
+
         <TextView
             android:id="@+id/prime_number"
             android:layout_width="match_parent"
@@ -87,6 +104,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/linkcollector" />
+
+
 
 
 

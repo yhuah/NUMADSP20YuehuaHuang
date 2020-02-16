@@ -30,5 +30,8 @@
     <string name="prime_number">prime_number</string>
     <string name="START_FIND_PRIME">START_FIND_PRIME</string>
     <string name="STOP_FIND_PRIME">STOP_FIND_PRIME</string>
+    <string name="GPS_infp">Locating now</string>
+    <string name="gps_info">gps_info</string>
+    <string name="show_gps">show_gps</string>
 
 </resources>
