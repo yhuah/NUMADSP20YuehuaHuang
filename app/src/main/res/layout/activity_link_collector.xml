@@ -24,6 +24,14 @@
         android:layout_gravity="center_horizontal"
         android:text="@string/scroll_to_see_more_links"
         android:textSize="24sp" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_delete_link"
+        android:layout_width="wrap_content"
+        android:layout_height="78dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="88dp"
+        app:srcCompat="@android:drawable/ic_menu_delete" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/linkRecyclerView"
@@ -60,5 +68,8 @@
         android:layout_marginBottom="70dp"
         android:hint="@string/enter_link_name_here"
         android:inputType="text" />
+
+
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

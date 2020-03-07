@@ -32,6 +32,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         }
     }
 
+    void updateLinkList(ArrayList<LinkCollectorActivity.DataPair> links) {
+        this.myData = links;
+    }
+
     //create new views
     @NonNull
     @Override

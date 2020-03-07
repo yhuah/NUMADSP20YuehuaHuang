@@ -1,5 +1,6 @@
 package com.example.numadsp20yuehuahuang;
 
+import android.database.SQLException;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -45,6 +46,10 @@ public class LinkCollectorActivity extends AppCompatActivity {
         private String url;
 
         public DataPair(String name, String url) {
+            if (name == null || url == null || name.equals("") || url.equals("")) {
+                throw new IllegalArgumentException();
+
+            }
             this.name = name;
             this.url = url;
         }
@@ -65,34 +70,67 @@ public class LinkCollectorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_link_collector);
+        final MySqliteHandler db = new MySqliteHandler(this);
 
-        FloatingActionButton fab= findViewById(R.id.add_fab);
+
+        //FloatingActionButton fab= findViewById(R.id.add_fab);
+        FloatingActionButton add_fab = findViewById(R.id.add_fab);
+        FloatingActionButton del_fab = findViewById(R.id.fab_delete_link);
 
         RecyclerView rv = findViewById(R.id.linkRecyclerView);
         rv.setLayoutManager(new LinearLayoutManager(this));
-        final MyAdapter myAdapter = new MyAdapter(links);
+        final MyAdapter myAdapter = new MyAdapter(db.getAllLinks());
         rv.setHasFixedSize(true);
         rv.setAdapter(myAdapter);
 
 
 
-        fab.setOnClickListener(new View.OnClickListener(){
+        add_fab.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v){
                 String name = ((EditText) findViewById(R.id.link_name_input)).getText().toString();
                 String url = ((EditText) findViewById(R.id.link_url_input)).getText().toString();
-                links.add(new DataPair(name, url));
+                //links.add(new DataPair(name, url));
+               // db.addLink(new DataPair(name, url));
+                //links.add(new DataPair(name, url));
+
+                try {
+                    db.addLink(new DataPair(name, url));
+                } catch (IllegalArgumentException e) {
+                    Snackbar.make(v, "No Null Value Allowed.", Snackbar.LENGTH_LONG)
+                            .setAction("Error", null).show();
+                    return;
+                } catch ( SQLException e) {
+                    Snackbar.make(v, "No Same Combination of Name & URL Allowed.", Snackbar.LENGTH_LONG)
+                            .setAction("Error", null).show();
+                    return;
+                }
+
+                myAdapter.updateLinkList(db.getAllLinks());
                 myAdapter.notifyDataSetChanged();
                 Snackbar.make(v, "Your link has been successfully added!", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
 
             }
+
+
         });
 
-
-
+        del_fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                db.clearAllLinks();
+                myAdapter.updateLinkList(db.getAllLinks());
+                myAdapter.notifyDataSetChanged();
+                Snackbar.make(v, "All links have been deleted!", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
 
 
     }
 }
+
+
+
